@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 19:09:04 by sbednar           #+#    #+#             */
-/*   Updated: 2019/05/27 20:44:17 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/05/27 23:18:24 by sbednar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ typedef struct		s_ui_el
 	t_frect			relative_rect;
 	t_ui_el_events	events;
 	Uint32			id;
-	Uint32			params; // <- put there next parameters
+	Uint32			params;
 	t_vec2			ptr_rel_pos; // TODO it's mouse pos
 	void			*data;
 }					t_ui_el;
@@ -250,8 +250,6 @@ typedef struct		s_ui_main
 	t_list			*windows;
 	SDL_Event		sdl_event;
 	t_ui_raycaster	raycaster;
-	Uint32			cur_tick;
-	Uint32			target_tick;
 	Uint32			params;
 	t_vec2			ptr_pos;
 	t_list			*sdl_surfaces;
@@ -283,7 +281,7 @@ int					ui_main_add_surface_by_path(t_ui_main *m, const char *path, const char *
 TTF_Font			*ui_main_get_font_by_id(t_ui_main *m, const char *font_id);
 SDL_Surface			*ui_main_get_surface_by_id(t_ui_main *m, const char *sur_id);
 
-void				ui_main_fill_default_surfaces(t_ui_main *m);
+int					ui_main_fill_default_surfaces(t_ui_main *m);
 
 t_ui_win			*ui_main_find_window_by_id(t_ui_main *m, Uint32 windowID);
 void				ui_main_remove_window_by_id(t_ui_main *m, Uint32 windowID);
